@@ -1,22 +1,12 @@
-'''
-@name:          animEnvironment.py
-@repository:    https://github.com/studiocoop/maya
-@version:       1.0
-@license:       UNLICENCE
-@authors:       Santiago Montesdeoca [artineering.io]
-
+"""
+@license:       MIT
+@repository:    https://github.com/artineering-io/maya-anim-coop
 @summary:       Sets animation environment according to user preferences
-
-@requires:      -
-
 @run:           import animEnvironment.py
                 animEnvironment.setHotkeys('default')
                 || animEnvironment.setHotkeys('alt')
                 || animEnvironment.resetHotkeys()
-
-@created:       1 Jul, 2015
-@change:        19 Jun, 2016
-'''
+"""
 import coopLib as lib
 import maya.mel as mel
 import maya.cmds as cmds

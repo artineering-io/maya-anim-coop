@@ -31,7 +31,7 @@ def openRecentFile(yourFileFolder='', formats=['*.mov', '*.avi'], mostRecentNr=0
     
     #get path
     path = cmds.workspace(q=True, fullName=True)
-    path = os.path.abspath(os.path.join(path, yourFileFolder))#abspath -> normalize path
+    path = os.path.abspath(os.path.join(path, yourFileFolder))  # abspath -> normalize path
     print 'Specified path: {0}'.format(path)
     
     #get files and store them in a dict with the time as key

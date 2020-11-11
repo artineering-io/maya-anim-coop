@@ -1,4 +1,4 @@
-global proc shelf_ANIM () {
+global proc shelf_anim () {
     global string $gBuffStr;
     global string $gBuffStr0;
     global string $gBuffStr1;
@@ -7,60 +7,72 @@ global proc shelf_ANIM () {
     shelfButton
         -enableCommandRepeat 1
         -enable 1
-        -width 35
-        -height 35
+        -width 39
+        -height 34
         -manage 1
         -visible 1
         -preventOverride 0
-        -annotation "Set up animation environment"
+        -annotation "Open browser with documentation on the animation shelf"
         -enableBackground 0
-        -align "center"
-        -label "ANIM"
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "anim" 
         -labelOffset 0
-        -font "plainLabelFont"
-        -overlayLabelColor 0.8 0.8 0.8
-        -overlayLabelBackColor 0 0 0 0.25
-        -image "animEnvironment.png"
-        -image1 "animEnvironment.png"
-        -style "iconOnly"
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.25 
+        -image "coop_animInfo.png" 
+        -image1 "coop_animInfo.png" 
+        -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "import animEnvironment\nanimEnvironment.load()"
-        -sourceType "python"
+        -command "import coopLib as lib\nlib.openUrl('https://github.com/artineering-io/maya-anim-coop/wiki')" 
+        -sourceType "python" 
         -commandRepeatable 1
         -flat 1
-        -mi "Default Hotkeys" ( "import animEnvironment\nanimEnvironment.setHotkeys('default')" )
+        -mi "Set Animation Environment" ( "import animEnvironment\nanimEnvironment.load()" )
         -mip 0
-        -mi "ALT Hotkeys" ( "import animEnvironment\nanimEnvironment.setHotkeys('alt')" )
+        -mi "Default Hotkeys" ( "import animEnvironment\nanimEnvironment.setHotkeys('default')" )
         -mip 1
-        -mi "Reset Hotkeys" ( "import animEnvironment\nanimEnvironment.resetHotkeys()" )
+        -mi "ALT Hotkeys" ( "import animEnvironment\nanimEnvironment.setHotkeys('alt')" )
         -mip 2
-        -mi "Restore Shelves" ( "import animEnvironment\nanimEnvironment.restoreShelves()" )
+        -mi "Reset Hotkeys" ( "import animEnvironment\nanimEnvironment.resetHotkeys()" )
         -mip 3
+        -mi "Restore Shelves" ( "import animEnvironment\nanimEnvironment.restoreShelves()" )
+        -mip 4
     ;
     shelfButton
         -enableCommandRepeat 1
         -enable 1
-        -width 35
-        -height 35
+        -width 39
+        -height 34
         -manage 1
         -visible 1
         -preventOverride 0
-        -annotation "Show only animation objects"
+        -annotation "Show only animation objects" 
         -enableBackground 0
-        -align "center"
-        -label "animOnly"
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "animOnly" 
         -labelOffset 0
-        -font "plainLabelFont"
-        -overlayLabelColor 0.8 0.8 0.8
-        -overlayLabelBackColor 0 0 0 0.25
-        -image "showAnim.png"
-        -image1 "showAnim.png"
-        -style "iconOnly"
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.25 
+        -image "coop_animShow.png" 
+        -image1 "coop_animShow.png" 
+        -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "import coopModelEditorManager\ncoopModelEditorManager.showOnlyAnim()"
-        -sourceType "python"
+        -command "import coopModelEditorManager\ncoopModelEditorManager.showOnlyAnim()" 
+        -sourceType "python" 
         -commandRepeatable 1
         -flat 1
         -mi "Layout objects" ( "import coopModelEditorManager\ncoopModelEditorManager.showOnlyLayout()" )
@@ -71,26 +83,31 @@ global proc shelf_ANIM () {
     shelfButton
         -enableCommandRepeat 1
         -enable 1
-        -width 35
-        -height 35
+        -width 39
+        -height 34
         -manage 1
         -visible 1
         -preventOverride 0
-        -annotation "Open the most recent playblast"
+        -annotation "Open the most recent playblast" 
         -enableBackground 0
-        -align "center"
-        -label "last"
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "last" 
         -labelOffset 0
-        -font "plainLabelFont"
-        -overlayLabelColor 0.8 0.8 0.8
-        -overlayLabelBackColor 0 0 0 0.25
-        -image "animOpenRecentPlayblast.png"
-        -image1 "animOpenRecentPlayblast.png"
-        -style "iconOnly"
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.25 
+        -image "coop_animOpenRecentPlayblast.png" 
+        -image1 "coop_animOpenRecentPlayblast.png" 
+        -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "import coopOpenRecent\ncoopOpenRecent.openRecentFile(mostRecentNr=0)"
-        -sourceType "python"
+        -command "import coopOpenRecent\ncoopOpenRecent.openRecentFile(mostRecentNr=0)" 
+        -sourceType "python" 
         -commandRepeatable 1
         -flat 1
         -mi "Second recent" ( "import coopOpenRecent\ncoopOpenRecent.openRecentFile(mostRecentNr=1)" )
@@ -101,52 +118,62 @@ global proc shelf_ANIM () {
     shelfButton
         -enableCommandRepeat 1
         -enable 1
-        -width 35
-        -height 35
+        -width 39
+        -height 34
         -manage 1
         -visible 1
         -preventOverride 0
-        -annotation "Playblast timeline"
+        -annotation "Playblast timeline" 
         -enableBackground 0
-        -align "center"
-        -label "playB"
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "playB" 
         -labelOffset 0
-        -font "plainLabelFont"
-        -overlayLabelColor 0.8 0.8 0.8
-        -overlayLabelBackColor 0 0 0 0.25
-        -image "animPlayblast.png"
-        -image1 "animPlayblast.png"
-        -style "iconOnly"
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.25 
+        -image "coop_animPlayblast.png" 
+        -image1 "coop_animPlayblast.png" 
+        -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "import coopPlayblast\ncoopPlayblast.playblast()"
-        -sourceType "python"
+        -command "import coopPlayblast\ncoopPlayblast.playblast()" 
+        -sourceType "python" 
         -commandRepeatable 1
         -flat 1
     ;
     shelfButton
         -enableCommandRepeat 1
         -enable 1
-        -width 35
-        -height 35
+        -width 39
+        -height 34
         -manage 1
         -visible 1
         -preventOverride 0
-        -annotation "Toggle ghosting"
+        -annotation "Toggle ghosting" 
         -enableBackground 0
-        -align "center"
-        -label "ghost"
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "ghost" 
         -labelOffset 0
-        -font "plainLabelFont"
-        -overlayLabelColor 0.8 0.8 0.8
-        -overlayLabelBackColor 0 0 0 0.25
-        -image "animGhostToggler.png"
-        -image1 "animGhostToggler.png"
-        -style "iconOnly"
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.25 
+        -image "coop_animGhostToggler.png" 
+        -image1 "coop_animGhostToggler.png" 
+        -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "import animGhostToggler\nanimGhostToggler.toggleGhosting()"
-        -sourceType "python"
+        -command "import animGhostToggler\nanimGhostToggler.toggleGhosting()" 
+        -sourceType "python" 
         -commandRepeatable 1
         -flat 1
         -mi "Enable Ghosting" ( "import animGhostToggler\nanimGhostToggler.enableGhosting()" )
@@ -157,26 +184,31 @@ global proc shelf_ANIM () {
     shelfButton
         -enableCommandRepeat 1
         -enable 1
-        -width 35
-        -height 35
+        -width 39
+        -height 34
         -manage 1
         -visible 1
         -preventOverride 0
-        -annotation "Toggle motion trails"
+        -annotation "Toggle motion trails" 
         -enableBackground 0
-        -align "center"
-        -label "trail"
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "trail" 
         -labelOffset 0
-        -font "plainLabelFont"
-        -overlayLabelColor 0.8 0.8 0.8
-        -overlayLabelBackColor 0 0 0 0.25
-        -image "animMotionTrailToggler.png"
-        -image1 "animMotionTrailToggler.png"
-        -style "iconOnly"
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.25 
+        -image "coop_animMotionTrailToggler.png" 
+        -image1 "coop_animMotionTrailToggler.png" 
+        -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "import animMotionTrailToggler\nanimMotionTrailToggler.toggleTrails()"
-        -sourceType "python"
+        -command "import animMotionTrailToggler\nanimMotionTrailToggler.toggleTrails()" 
+        -sourceType "python" 
         -commandRepeatable 1
         -flat 1
         -mi "Create Trails" ( "import animMotionTrailToggler\nanimMotionTrailToggler.createTrails()" )
@@ -184,31 +216,51 @@ global proc shelf_ANIM () {
         -mi "Delete Trails" ( "import animMotionTrailToggler\nanimMotionTrailToggler.deleteTrails()" )
         -mip 1
     ;
-    shelfButton
-        -enableCommandRepeat 1
+    separator
         -enable 1
-        -width 35
+        -width 34
         -height 35
         -manage 1
         -visible 1
         -preventOverride 0
-        -annotation "Open shelf information/help"
         -enableBackground 0
-        -align "center"
-        -label "info"
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -style "shelf" 
+        -horizontal 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Detach shelf" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "toggle" 
         -labelOffset 0
-        -font "plainLabelFont"
-        -overlayLabelColor 0.8 0.8 0.8
-        -overlayLabelBackColor 0 0 0 0.25
-        -image "shelfInfo.png"
-        -image1 "shelfInfo.png"
-        -style "iconOnly"
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "coop_detach.png" 
+        -image1 "coop_detach.png" 
+        -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "import coopLib as lib\nlib.openUrl('sites.google.com/a/studio.coop/mayadev/')"
-        -sourceType "python"
+        -command "import coopLib\ncoopLib.detachShelf()" 
+        -sourceType "python" 
         -commandRepeatable 1
         -flat 1
     ;
-
-}
+} 
