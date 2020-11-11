@@ -1,0 +1,214 @@
+global proc shelf_ANIM () {
+    global string $gBuffStr;
+    global string $gBuffStr0;
+    global string $gBuffStr1;
+
+
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 35
+        -height 35
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Set up animation environment"
+        -enableBackground 0
+        -align "center"
+        -label "ANIM"
+        -labelOffset 0
+        -font "plainLabelFont"
+        -overlayLabelColor 0.8 0.8 0.8
+        -overlayLabelBackColor 0 0 0 0.25
+        -image "animEnvironment.png"
+        -image1 "animEnvironment.png"
+        -style "iconOnly"
+        -marginWidth 1
+        -marginHeight 1
+        -command "import animEnvironment\nanimEnvironment.load()"
+        -sourceType "python"
+        -commandRepeatable 1
+        -flat 1
+        -mi "Default Hotkeys" ( "import animEnvironment\nanimEnvironment.setHotkeys('default')" )
+        -mip 0
+        -mi "ALT Hotkeys" ( "import animEnvironment\nanimEnvironment.setHotkeys('alt')" )
+        -mip 1
+        -mi "Reset Hotkeys" ( "import animEnvironment\nanimEnvironment.resetHotkeys()" )
+        -mip 2
+        -mi "Restore Shelves" ( "import animEnvironment\nanimEnvironment.restoreShelves()" )
+        -mip 3
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 35
+        -height 35
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Show only animation objects"
+        -enableBackground 0
+        -align "center"
+        -label "animOnly"
+        -labelOffset 0
+        -font "plainLabelFont"
+        -overlayLabelColor 0.8 0.8 0.8
+        -overlayLabelBackColor 0 0 0 0.25
+        -image "showAnim.png"
+        -image1 "showAnim.png"
+        -style "iconOnly"
+        -marginWidth 1
+        -marginHeight 1
+        -command "import coopModelEditorManager\ncoopModelEditorManager.showOnlyAnim()"
+        -sourceType "python"
+        -commandRepeatable 1
+        -flat 1
+        -mi "Layout objects" ( "import coopModelEditorManager\ncoopModelEditorManager.showOnlyLayout()" )
+        -mip 0
+        -mi "Playblast view" ( "import coopModelEditorManager\ncoopModelEditorManager.showOnlyPlayblast()" )
+        -mip 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 35
+        -height 35
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Open the most recent playblast"
+        -enableBackground 0
+        -align "center"
+        -label "last"
+        -labelOffset 0
+        -font "plainLabelFont"
+        -overlayLabelColor 0.8 0.8 0.8
+        -overlayLabelBackColor 0 0 0 0.25
+        -image "animOpenRecentPlayblast.png"
+        -image1 "animOpenRecentPlayblast.png"
+        -style "iconOnly"
+        -marginWidth 1
+        -marginHeight 1
+        -command "import coopOpenRecent\ncoopOpenRecent.openRecentFile(mostRecentNr=0)"
+        -sourceType "python"
+        -commandRepeatable 1
+        -flat 1
+        -mi "Second recent" ( "import coopOpenRecent\ncoopOpenRecent.openRecentFile(mostRecentNr=1)" )
+        -mip 0
+        -mi "Third recent" ( "import coopOpenRecent\ncoopOpenRecent.openRecentFile(mostRecentNr=2)" )
+        -mip 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 35
+        -height 35
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Playblast timeline"
+        -enableBackground 0
+        -align "center"
+        -label "playB"
+        -labelOffset 0
+        -font "plainLabelFont"
+        -overlayLabelColor 0.8 0.8 0.8
+        -overlayLabelBackColor 0 0 0 0.25
+        -image "animPlayblast.png"
+        -image1 "animPlayblast.png"
+        -style "iconOnly"
+        -marginWidth 1
+        -marginHeight 1
+        -command "import coopPlayblast\ncoopPlayblast.playblast()"
+        -sourceType "python"
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 35
+        -height 35
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Toggle ghosting"
+        -enableBackground 0
+        -align "center"
+        -label "ghost"
+        -labelOffset 0
+        -font "plainLabelFont"
+        -overlayLabelColor 0.8 0.8 0.8
+        -overlayLabelBackColor 0 0 0 0.25
+        -image "animGhostToggler.png"
+        -image1 "animGhostToggler.png"
+        -style "iconOnly"
+        -marginWidth 1
+        -marginHeight 1
+        -command "import animGhostToggler\nanimGhostToggler.toggleGhosting()"
+        -sourceType "python"
+        -commandRepeatable 1
+        -flat 1
+        -mi "Enable Ghosting" ( "import animGhostToggler\nanimGhostToggler.enableGhosting()" )
+        -mip 0
+        -mi "Disable Ghosting" ( "import animGhostToggler\nanimGhostToggler.disableGhosting()" )
+        -mip 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 35
+        -height 35
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Toggle motion trails"
+        -enableBackground 0
+        -align "center"
+        -label "trail"
+        -labelOffset 0
+        -font "plainLabelFont"
+        -overlayLabelColor 0.8 0.8 0.8
+        -overlayLabelBackColor 0 0 0 0.25
+        -image "animMotionTrailToggler.png"
+        -image1 "animMotionTrailToggler.png"
+        -style "iconOnly"
+        -marginWidth 1
+        -marginHeight 1
+        -command "import animMotionTrailToggler\nanimMotionTrailToggler.toggleTrails()"
+        -sourceType "python"
+        -commandRepeatable 1
+        -flat 1
+        -mi "Create Trails" ( "import animMotionTrailToggler\nanimMotionTrailToggler.createTrails()" )
+        -mip 0
+        -mi "Delete Trails" ( "import animMotionTrailToggler\nanimMotionTrailToggler.deleteTrails()" )
+        -mip 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 35
+        -height 35
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Open shelf information/help"
+        -enableBackground 0
+        -align "center"
+        -label "info"
+        -labelOffset 0
+        -font "plainLabelFont"
+        -overlayLabelColor 0.8 0.8 0.8
+        -overlayLabelBackColor 0 0 0 0.25
+        -image "shelfInfo.png"
+        -image1 "shelfInfo.png"
+        -style "iconOnly"
+        -marginWidth 1
+        -marginHeight 1
+        -command "import coopLib as lib\nlib.openUrl('sites.google.com/a/studio.coop/mayadev/')"
+        -sourceType "python"
+        -commandRepeatable 1
+        -flat 1
+    ;
+
+}

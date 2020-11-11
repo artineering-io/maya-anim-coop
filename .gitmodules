@@ -1,0 +1,3 @@
+[submodule "scripts/coop"]
+	path = scripts/coop
+	url = https://github.com/artineering-io/maya-coop
