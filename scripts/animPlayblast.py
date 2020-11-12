@@ -41,7 +41,7 @@ def playblast():
     cmds.camera(camera_shape, e=True, displaySafeTitle=prefs.playblast_safe_title, displaySafeAction=prefs.playblast_safe_action,
                 displayResolution=prefs.playblast_display_resolution)
     # playblast with user settings except ornaments
-    editor.hide_all_display_objects()
+    editor.hide_all()
     editor.show_only_playblast()
     # get audio on timeslider
     playback_slider = mel.eval('$tmpVar=$gPlayBackSlider')

@@ -68,7 +68,7 @@ def load():
     lib.displayInfo("ENVIRONMENT SET")
 
 
-def set_hotkeys(pref):
+def set_hotkeys(pref='default'):
     """ set hotkeys according to pref dictionary
     TODO: define hotkeys in userPrefs file instead
     """
@@ -95,11 +95,11 @@ def set_hotkeys(pref):
         # versions below 2016 don't have shift modifier in hotkey command
         # special key
         cmds.nameCommand('SpecialKeyNameCommand', ann='Set a Special Keyframe',
-                         c='python("import coopAnimUtils;coopAnimUtils.keySpecial()")')
+                         c='python("import coopAnim;coopAnim.key_special()")')
         cmds.hotkey(k=hotkeys[6], alt=True, name='SpecialKeyNameCommand')
         # breakdown key
         cmds.nameCommand('BreakdownKeyNameCommand', ann='Key only keyed attributes',
-                         c='python("import coopAnimUtils;coopAnimUtils.keyInbetween()")')
+                         c='python("import coopAnim;coopAnim.key_inbetween()")')
         cmds.hotkey(k=hotkeys[6], sht=True, name='BreakdownKeyNameCommand')
     # curvesel key TODO
     # cmds.nameCommand('ScriptEditorNameCommand', ann='ScriptEditorNameCommand', c='ScriptEditor')
@@ -108,7 +108,7 @@ def set_hotkeys(pref):
     cmds.nameCommand('ScriptEditorNameCommand', ann='ScriptEditorNameCommand', c='ScriptEditor')
     cmds.hotkey(k='i', alt=True, name='ScriptEditorNameCommand')
 
-    lib.displayInfo(pref + " hotkeys set (to change or reset hotkeys, right mouse click on the same shelf button")
+    lib.displayInfo(pref + " hotkeys set \nTo change or reset hotkeys, right-click on the same shelf button")
 
 
 def reset_hotkeys():
@@ -144,14 +144,13 @@ def reset_hotkeys():
         cmds.hotkey(k='s', sht=True, name='KeyframeTangentMarkingMenuNameCommand')
     # curvesel key TODO
     lib.displayInfo("Reverted to default Maya hotkeys\n"
-                    "(to change or reset hotkeys, right mouse click on the same shelf button")
+                    "To change or reset hotkeys, right mouse click on the same shelf button")
 
 
 def delete_shelves():
     """ Unload all unnecessary plugins defined in the userPrefs file """
-    # find environment directory
-    scriptsDir = lib.Path(cmds.internalVar(usd=True))
-    env_path = lib.Path(scriptsDir)
+    # find shelves directory
+    shelves_path = lib.Path(lib.getEnvDir()).child("prefs").child("shelves")
 
     # hide unnecessary shelves
     shelves_dict = prefs.unnecessary_shelves
@@ -164,22 +163,17 @@ def delete_shelves():
     # all shelves loaded -> save them
     mel.eval('saveAllShelves $gShelfTopLevel;')
     # time to delete them
-    shelf_top_level = mel.eval('$tempMelVar=$gShelfTopLevel') + '|'
     for shelf in shelves_dict:
-        shelf_layout = shelves_dict[shelf].split('.mel')[0]
-        if cmds.shelfLayout(shelf_top_level + shelf_layout, q=True, ex=True):
-            cmds.deleteUI(shelf_top_level + shelf_layout, layout=True)
-    # mark them as deleted to avoid startup loading
-    shelves_path = lib.Path(env_path.path).child(prefs).child('shelves')
-    for shelf in shelves_dict:
-        shelf_path = lib.Path(shelves_path.path).child('shelf_{}'.format(shelves_dict[shelf]))
-        deleted_shelf_path = lib.Path(shelf_path.path + '.deleted')
+        shelf_path = lib.Path(shelves_path.path).child("shelf_{}".format(shelves_dict[shelf]))
         if shelf_path.exists():
-            # make sure the deleted file doesn't already exist
-            if deleted_shelf_path.exists():
-                deleted_shelf_path.delete()
-                continue
-            os.rename(shelf_path.path, deleted_shelf_path.path)
+            try:
+                mel.eval('deleteShelfTab "{}";'.format(shelf))
+            except RuntimeError:
+                pass
+    # all shelves deleted -> save them
+    mel.eval('saveAllShelves $gShelfTopLevel;')
+    # return to anim shelf
+    mel.eval('jumpToNamedShelf("anim");')
 
 
 def unload_plugins():
@@ -194,9 +188,6 @@ def unload_plugins():
 
 def restore_environment():
     """ Restore to default environment """
-    # restore shelves marked as *.deleted
-    lib.restoreShelves()
-
     # restore unloaded plugins
     plugins = prefs.unnecessary_plugins
     for plugin in plugins:
@@ -230,3 +221,6 @@ def restore_environment():
     cmds.timeControl(playback_slider, h=36, e=True)
     # special tick color
     cmds.displayRGBColor("timeSliderTickDrawSpecial", 1, 1, 0)
+
+    # restore shelves marked as *.deleted
+    lib.restoreShelves()

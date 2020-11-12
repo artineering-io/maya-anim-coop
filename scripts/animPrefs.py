@@ -17,30 +17,24 @@ resolution_gate = False
 display_resolution = False
 
 unnecessary_shelves = {
-            'Dynamics': 'Dynamics.mel',  # Maya 2011-2015
-            'Fluids': 'Fluids.mel',  # Maya 2013-2015
-            'Fur': 'Fur.mel',  # Maya 2013-2015
-            'Muscle': 'Muscle.mel',  # Maya 2013-2015
-            'nCloth': 'NCloth.mel',  # Maya 2013-2015
-            'Subdivs': 'Subdivs.mel',  # Maya 2011-2013
-            'Toon': 'Toon.mel',  # Maya 2013-2015
-            'nHair': 'Hair.mel',  # Maya 2013-2015
-            'PaintEffects': 'PaintEffects.mel',  # Maya 2013-2015
             'XGen': 'XGen.mel',  # Maya 2015+
             'Sculpting': 'Sculpting.mel',  # Maya 2016+
             'FX Caching': 'FXCaching.mel',  # Maya 2016+
             'FX': 'FX.mel',  # Maya 2016+
             'MASH': 'MASH.mel',  # Maya 2017+
             'Bifrost': 'Bifrost.mel',  # Maya 2017+
-            'Motion Graphics': 'MotionGraphics.mel'  # Maya 2017+
+            'MotionGraphics': 'MotionGraphics.mel',  # Maya 2017+
+            'TURTLE': 'TURTLE.mel'  # Maya 2018+
 }
 
 unnecessary_plugins = [
             'hairPhysicalShader',  # Maya 2017+
-            'bifrostshellnode',  # Maya 2017+
+            'bifrostshellnode',  # Maya 2018+
+            'bifrostGraph',  # Maya 2018+
             'bifrostvisplugin',  # Maya 2017+
             'xgenToolkit',  # Maya 2015+
             'MASH'  # Maya 2017+
+            'Boss'  #
 ]
 
 ###############################################################################
