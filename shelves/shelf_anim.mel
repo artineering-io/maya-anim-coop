@@ -38,11 +38,11 @@ global proc shelf_anim () {
         -mip 0
         -mi "Restore Environment" ( "import animEnvironment\nanimEnvironment.restore_environment()" )
         -mip 1
-        -mi "ALT Hotkeys" ( "import animEnvironment\nanimEnvironment.set_hotkeys('alt')" )
-        -mip 2
-        -mi "Reset Hotkeys" ( "import animEnvironment\nanimEnvironment.reset_hotkeys()" )
-        -mip 3
         -mi "Default Hotkeys" ( "import animEnvironment\nanimEnvironment.set_hotkeys('default')" )
+        -mip 2
+        -mi "ALT Hotkeys" ( "import animEnvironment\nanimEnvironment.set_hotkeys('alt')" )
+        -mip 3
+        -mi "Reset Hotkeys" ( "import animEnvironment\nanimEnvironment.reset_hotkeys()" )
         -mip 4
     ;
     shelfButton
