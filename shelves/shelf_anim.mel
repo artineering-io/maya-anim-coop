@@ -7,12 +7,12 @@ global proc shelf_anim () {
     shelfButton
         -enableCommandRepeat 1
         -enable 1
-        -width 39
+        -width 35
         -height 34
         -manage 1
         -visible 1
         -preventOverride 0
-        -annotation "Open browser with documentation on the animation shelf"
+        -annotation "Open browser with documentation on the animation shelf" 
         -enableBackground 0
         -highlightColor 0.321569 0.521569 0.65098 
         -align "center" 
@@ -30,25 +30,25 @@ global proc shelf_anim () {
         -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "import coopLib as lib\nlib.openUrl('https://github.com/artineering-io/maya-anim-coop/wiki')" 
+        -command "import coopLib as lib\nlib.openUrl('https://github.com/artineering-io/maya-anim-coop/wiki/Maya-Animation-Tools')" 
         -sourceType "python" 
         -commandRepeatable 1
         -flat 1
         -mi "Set Animation Environment" ( "import animEnvironment\nanimEnvironment.load()" )
         -mip 0
-        -mi "Default Hotkeys" ( "import animEnvironment\nanimEnvironment.setHotkeys('default')" )
+        -mi "Restore Environment" ( "import animEnvironment\nanimEnvironment.restore_environment()" )
         -mip 1
-        -mi "ALT Hotkeys" ( "import animEnvironment\nanimEnvironment.setHotkeys('alt')" )
+        -mi "ALT Hotkeys" ( "import animEnvironment\nanimEnvironment.set_hotkeys('alt')" )
         -mip 2
-        -mi "Reset Hotkeys" ( "import animEnvironment\nanimEnvironment.resetHotkeys()" )
+        -mi "Reset Hotkeys" ( "import animEnvironment\nanimEnvironment.reset_hotkeys()" )
         -mip 3
-        -mi "Restore Shelves" ( "import animEnvironment\nanimEnvironment.restoreShelves()" )
+        -mi "Default Hotkeys" ( "import animEnvironment\nanimEnvironment.set_hotkeys('default')" )
         -mip 4
     ;
     shelfButton
         -enableCommandRepeat 1
         -enable 1
-        -width 39
+        -width 35
         -height 34
         -manage 1
         -visible 1
@@ -71,19 +71,19 @@ global proc shelf_anim () {
         -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "import coopModelEditorManager\ncoopModelEditorManager.showOnlyAnim()" 
+        -command "import coopModelEditorManager\ncoopModelEditorManager.show_only_anim()" 
         -sourceType "python" 
         -commandRepeatable 1
         -flat 1
-        -mi "Layout objects" ( "import coopModelEditorManager\ncoopModelEditorManager.showOnlyLayout()" )
+        -mi "Layout objects" ( "import coopModelEditorManager\ncoopModelEditorManager.show_only_layout()" )
         -mip 0
-        -mi "Playblast view" ( "import coopModelEditorManager\ncoopModelEditorManager.showOnlyPlayblast()" )
+        -mi "Playblast view" ( "import coopModelEditorManager\ncoopModelEditorManager.show_only_playblast()" )
         -mip 1
     ;
     shelfButton
         -enableCommandRepeat 1
         -enable 1
-        -width 39
+        -width 35
         -height 34
         -manage 1
         -visible 1
@@ -106,19 +106,19 @@ global proc shelf_anim () {
         -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "import coopOpenRecent\ncoopOpenRecent.openRecentFile(mostRecentNr=0)" 
+        -command "import coopOpenRecent\ncoopOpenRecent.open_recent(most_recent_nr=0)" 
         -sourceType "python" 
         -commandRepeatable 1
         -flat 1
-        -mi "Second recent" ( "import coopOpenRecent\ncoopOpenRecent.openRecentFile(mostRecentNr=1)" )
+        -mi "Second recent" ( "import coopOpenRecent\ncoopOpenRecent.open_recent(most_recent_nr=1)" )
         -mip 0
-        -mi "Third recent" ( "import coopOpenRecent\ncoopOpenRecent.openRecentFile(mostRecentNr=2)" )
+        -mi "Third recent" ( "import coopOpenRecent\ncoopOpenRecent.open_recent(most_recent_nr=2)" )
         -mip 1
     ;
     shelfButton
         -enableCommandRepeat 1
         -enable 1
-        -width 39
+        -width 35
         -height 34
         -manage 1
         -visible 1
@@ -141,7 +141,7 @@ global proc shelf_anim () {
         -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "import coopPlayblast\ncoopPlayblast.playblast()" 
+        -command "import animPlayblast\nanimPlayblast.playblast()" 
         -sourceType "python" 
         -commandRepeatable 1
         -flat 1
@@ -149,7 +149,7 @@ global proc shelf_anim () {
     shelfButton
         -enableCommandRepeat 1
         -enable 1
-        -width 39
+        -width 35
         -height 34
         -manage 1
         -visible 1
@@ -172,19 +172,19 @@ global proc shelf_anim () {
         -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "import animGhostToggler\nanimGhostToggler.toggleGhosting()" 
+        -command "import animGhostToggler\nanimGhostToggler.toggle_ghosting()" 
         -sourceType "python" 
         -commandRepeatable 1
         -flat 1
-        -mi "Enable Ghosting" ( "import animGhostToggler\nanimGhostToggler.enableGhosting()" )
+        -mi "Enable Ghosting" ( "import animGhostToggler\nanimGhostToggler.enable_ghosting()" )
         -mip 0
-        -mi "Disable Ghosting" ( "import animGhostToggler\nanimGhostToggler.disableGhosting()" )
+        -mi "Disable Ghosting" ( "import animGhostToggler\nanimGhostToggler.disable_ghosting()" )
         -mip 1
     ;
     shelfButton
         -enableCommandRepeat 1
         -enable 1
-        -width 39
+        -width 35
         -height 34
         -manage 1
         -visible 1
@@ -207,13 +207,13 @@ global proc shelf_anim () {
         -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "import animMotionTrailToggler\nanimMotionTrailToggler.toggleTrails()" 
+        -command "import animMotionTrailToggler\nanimMotionTrailToggler.toggle_trails()" 
         -sourceType "python" 
         -commandRepeatable 1
         -flat 1
-        -mi "Create Trails" ( "import animMotionTrailToggler\nanimMotionTrailToggler.createTrails()" )
+        -mi "Create Trails" ( "import animMotionTrailToggler\nanimMotionTrailToggler.create_trails()" )
         -mip 0
-        -mi "Delete Trails" ( "import animMotionTrailToggler\nanimMotionTrailToggler.deleteTrails()" )
+        -mi "Delete Trails" ( "import animMotionTrailToggler\nanimMotionTrailToggler.delete_trails()" )
         -mip 1
     ;
     separator
@@ -224,15 +224,12 @@ global proc shelf_anim () {
         -visible 1
         -preventOverride 0
         -enableBackground 0
-        -backgroundColor 0 0 0 
         -highlightColor 0.321569 0.521569 0.65098 
         -style "shelf" 
         -horizontal 0
     ;
     shelfButton
         -enableCommandRepeat 1
-        -flexibleWidthType 3
-        -flexibleWidthValue 32
         -enable 1
         -width 35
         -height 34
@@ -241,7 +238,6 @@ global proc shelf_anim () {
         -preventOverride 0
         -annotation "Detach shelf" 
         -enableBackground 0
-        -backgroundColor 0 0 0 
         -highlightColor 0.321569 0.521569 0.65098 
         -align "center" 
         -label "toggle" 
@@ -263,4 +259,5 @@ global proc shelf_anim () {
         -commandRepeatable 1
         -flat 1
     ;
+
 } 

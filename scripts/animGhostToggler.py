@@ -1,67 +1,53 @@
-'''
-@name:          animGhostToggler.py
-@repository:    https://github.com/studiocoop/maya
-@version:       1.0
-@license:       UNLICENCE
-@author:        Santiago Montesdeoca [artineering.io]
-
+"""
+@license:       MIT
+@repository:    https://github.com/artineering-io/maya-anim-coop
 @summary:       Toggles, enables and disables ghosting state of selected objects
-
-@requires:      -
-
 @run:           import animGhostToggler
-                animGhostToggler.toggleGhosting()
-                || animGhostToggler.disableGhosting()
-                || animGhostToggler.enableGhosting()
-
-@created:       14 Jul, 2015
-@change:        14 Jul, 2015
-'''
+                animGhostToggler.toggle_ghosting()
+                || animGhostToggler.disable_ghosting()
+                || animGhostToggler.enable_ghosting()
+"""
+from __future__ import print_function
+from __future__ import unicode_literals
 import maya.cmds as cmds
 
-def toggleGhosting():
-    '''Toggles ghosting attribute on selected shapes'''
-    #get all selected shape nodes
-    selectedShapes = cmds.ls(sl=True, s=True, dag=True, lf=True)
-    ghostingEnabled = isGhostingEnabled(selectedShapes)
-    if ghostingEnabled:
-        #disable ghosting
-        disableGhosting(selectedShapes)
+
+def toggle_ghosting():
+    """ Toggles ghosting attribute on selected shapes """
+    # get all selected shape nodes
+    selected_shapes = cmds.ls(sl=True, s=True, dag=True, lf=True)
+    is_enabled = ghosting_enabled(selected_shapes)
+    if is_enabled:
+        disable_ghosting(selected_shapes)
     else:
-        #enable ghosting
-        enableGhosting(selectedShapes)
+        enable_ghosting(selected_shapes)
 
 
-def disableGhosting(shapes=None):
-    '''Disables ghosting attribute on shapes or selected shapes'''
+def disable_ghosting(shapes=None):
+    """ Disables ghosting attribute on shapes or selected shapes """
     if not shapes:
-        #get selected shape nodes
+        # get selected shape nodes
         shapes = cmds.ls(sl=True, s=True, dag=True, lf=True)
     for shape in shapes:
-        cmds.setAttr('{0}.ghosting'.format(shape), 0)
+        cmds.setAttr("{0}.ghosting".format(shape), 0)
 
 
-def enableGhosting(shapes=None):
-    '''Enables ghosting attribute on shapes or selected shapes'''
+def enable_ghosting(shapes=None):
+    """ Enables ghosting attribute on shapes or selected shapes """
     if not shapes:
-        #get selected shape nodes
+        # get selected shape nodes
         shapes = cmds.ls(sl=True, s=True, dag=True, lf=True)
-    selectedShapes = cmds.ls(sl=True, s=True, dag=True, lf=True)
-    for shape in selectedShapes:
-        cmds.setAttr('{0}.ghosting'.format(shape), 1)
-
-
-def isGhostingEnabled(shapes):
-    '''Returns True if ghosting is enabled on most of selected objects'''
-    totalShapes = len(shapes)
-    shapesWithGhosting = 0
     for shape in shapes:
-        shapesWithGhosting += cmds.getAttr('{0}.ghosting'.format(shape))
-    if shapesWithGhosting>(totalShapes/2):
+        cmds.setAttr("{0}.ghosting".format(shape), 1)
+
+
+def ghosting_enabled(shapes):
+    """ Returns True if ghosting is enabled on most of selected objects """
+    total_shapes = len(shapes)
+    shapes_with_ghosting = 0
+    for shape in shapes:
+        shapes_with_ghosting += cmds.getAttr("{0}.ghosting".format(shape))
+    if shapes_with_ghosting > (total_shapes/2):
         return True
     else: 
         return False
-
-
-    
-    

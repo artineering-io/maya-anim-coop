@@ -1,93 +1,84 @@
-'''
-@name:          coopModelEditorManager.py
-@repository:    https://github.com/studiocoop/maya
-@version:       1.0
-@license:       UNLICENCE
-@authors:       Santiago Montesdeoca [artineering.io]
-
+"""
+@license:       MIT
+@repository:    https://github.com/artineering-io/maya-anim-coop
 @summary:       manages model editor panels (3D-viewports) settings for specific tasks
                 - showOnlyAnim
                 - showOnlyLayout
                 - showOnlyPlayblast
-                - showOnlyRigging (WIP)
-
-@requires:      -
-
 @run:           import coopModelEditorManager
                 coopModelEditorManager.showOnlyAnim()
                 || coopModelEditorManager.showOnlyLayout()
                 || coopModelEditorManager.showOnlyPlayblast()
-
-@created:       14 Jul, 2015
-@change:        08 Aug, 2015
-'''
-import coopLib as lib
+"""
+from __future__ import print_function
+from __future__ import unicode_literals
+import coop.coopLib as lib
 import maya.cmds as cmds
 
 
-def hideAllDisplayObjects(modelPanel=None):
-    '''hides all display objects of modelPanel'''
-    if not modelPanel:
-        modelPanel = lib.getActiveModelPanel()
-    cmds.modelEditor(modelPanel, e=True, alo=False)
+def hide_all_display_objects(model_panel=None):
+    """ hides all display objects of modelPanel """
+    if not model_panel:
+        model_panel = lib.getActiveModelPanel()
+    cmds.modelEditor(model_panel, e=True, alo=False)
 
 
-def showOnlyAnim():
-    '''show only nurbs (surfaces, curves) and polys (smoothshaded)'''
-    currentModelPanel = lib.getActiveModelPanel()
-    if currentModelPanel:
-        hideAllDisplayObjects(currentModelPanel)
-        cmds.modelEditor(currentModelPanel, e=True, ns=True) #nurbs surfaces
-        cmds.modelEditor(currentModelPanel, e=True, nc=True) #nurbs curves
-        cmds.modelEditor(currentModelPanel, e=True, pm=True) #polygons
-        cmds.modelEditor(currentModelPanel, e=True, motionTrails=True) #motion trails
-        cmds.modelEditor(currentModelPanel, e=True, greasePencils=True) #grease pencil
-        cmds.modelEditor(currentModelPanel, e=True, displayAppearance='smoothShaded')
+def show_only_anim():
+    """ show only nurbs (surfaces, curves) and polys (smoothshaded) """
+    activ_model_panel = lib.getActiveModelPanel()
+    if activ_model_panel:
+        hide_all_display_objects(activ_model_panel)
+        cmds.modelEditor(activ_model_panel, e=True, ns=True)  # nurbs surfaces
+        cmds.modelEditor(activ_model_panel, e=True, nc=True)  # nurbs curves
+        cmds.modelEditor(activ_model_panel, e=True, pm=True)  # polygons
+        cmds.modelEditor(activ_model_panel, e=True, motionTrails=True)  # motion trails
+        cmds.modelEditor(activ_model_panel, e=True, greasePencils=True)  # grease pencil
+        cmds.modelEditor(activ_model_panel, e=True, displayAppearance='smoothShaded')
     else:
         cmds.warning("No active model panel"),
 
         
-def showOnlyLayout():
-    '''show only nurbs, polys (flatshaded) and cameras'''
-    currentModelPanel = lib.getActiveModelPanel()
-    if currentModelPanel:
-        hideAllDisplayObjects(currentModelPanel)
-        cmds.modelEditor(currentModelPanel, e=True, ns=True) #nurbs surfaces
-        cmds.modelEditor(currentModelPanel, e=True, pm=True) #polygons
-        cmds.modelEditor(currentModelPanel, e=True, ca=True) #cameras
-        cmds.modelEditor(currentModelPanel, e=True, motionTrails=True) #motion trails
-        cmds.modelEditor(currentModelPanel, e=True, greasePencils=True) #grease pencil
-        cmds.modelEditor(currentModelPanel, e=True, displayAppearance='flatShaded')
+def show_only_layout():
+    """ show only nurbs, polys (flatshaded) and cameras """
+    activ_model_panel = lib.getActiveModelPanel()
+    if activ_model_panel:
+        hide_all_display_objects(activ_model_panel)
+        cmds.modelEditor(activ_model_panel, e=True, ns=True)  # nurbs surfaces
+        cmds.modelEditor(activ_model_panel, e=True, pm=True)  # polygons
+        cmds.modelEditor(activ_model_panel, e=True, ca=True)  # cameras
+        cmds.modelEditor(activ_model_panel, e=True, motionTrails=True)  # motion trails
+        cmds.modelEditor(activ_model_panel, e=True, greasePencils=True)  # grease pencil
+        cmds.modelEditor(activ_model_panel, e=True, displayAppearance='flatShaded')
     else:
         cmds.warning("No active model panel"),
         
             
-def showOnlyPlayblast():
-    '''show only geometry (smoothShaded)'''
-    currentModelPanel = lib.getActiveModelPanel()
-    if currentModelPanel:
-        hideAllDisplayObjects(currentModelPanel)
-        cmds.modelEditor(currentModelPanel, e=True, ns=True) #nurbs surfaces
-        cmds.modelEditor(currentModelPanel, e=True, pm=True) #polygons
-        cmds.modelEditor(currentModelPanel, e=True, displayAppearance='smoothShaded')
+def show_only_playblast():
+    """ show only geometry (smoothShaded) """
+    activ_model_panel = lib.getActiveModelPanel()
+    if activ_model_panel:
+        hide_all_display_objects(activ_model_panel)
+        cmds.modelEditor(activ_model_panel, e=True, ns=True)  # nurbs surfaces
+        cmds.modelEditor(activ_model_panel, e=True, pm=True)  # polygons
+        cmds.modelEditor(activ_model_panel, e=True, displayAppearance='smoothShaded')
     else:
         cmds.warning("No active model panel"),
 
 
-def showOnlyRigging():
-    currentModelPanel = lib.getActiveModelPanel()
-    if currentModelPanel:
-        hideAllDisplayObjects(currentModelPanel)
-        #probably show all?
-        cmds.modelEditor(currentModelPanel, e=True, ns=True) #nurbs surfaces
-        cmds.modelEditor(currentModelPanel, e=True, nc=True) #nurbs curves
-        cmds.modelEditor(currentModelPanel, e=True, pm=True) #polygons
-        cmds.modelEditor(currentModelPanel, e=True, j=True) #joints
-        cmds.modelEditor(currentModelPanel, e=True, jx=True) #x-ray joints
-        cmds.modelEditor(currentModelPanel, e=True, ikh=True) #IK handles
-        cmds.modelEditor(currentModelPanel, e=True, df=True) #deformers
-        cmds.modelEditor(currentModelPanel, e=True, dy=True) #dynamics
-        cmds.modelEditor(currentModelPanel, e=True, lc=True) #locators
-        cmds.modelEditor(currentModelPanel, e=True, displayAppearance='smoothShaded')
+def show_only_rigging():
+    activ_model_panel = lib.getActiveModelPanel()
+    if activ_model_panel:
+        hide_all_display_objects(activ_model_panel)
+        # probably show all?
+        cmds.modelEditor(activ_model_panel, e=True, ns=True)  # nurbs surfaces
+        cmds.modelEditor(activ_model_panel, e=True, nc=True)  # nurbs curves
+        cmds.modelEditor(activ_model_panel, e=True, pm=True)  # polygons
+        cmds.modelEditor(activ_model_panel, e=True, j=True)  # joints
+        cmds.modelEditor(activ_model_panel, e=True, jx=True)  # x-ray joints
+        cmds.modelEditor(activ_model_panel, e=True, ikh=True)  # IK handles
+        cmds.modelEditor(activ_model_panel, e=True, df=True)  # deformers
+        cmds.modelEditor(activ_model_panel, e=True, dy=True)  # dynamics
+        cmds.modelEditor(activ_model_panel, e=True, lc=True)  # locators
+        cmds.modelEditor(activ_model_panel, e=True, displayAppearance='smoothShaded')
     else:
         cmds.warning("No active model panel"),
